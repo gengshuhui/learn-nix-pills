@@ -1,0 +1,8 @@
+nix repl
+
+:l lib.nix
+f = { a, b }: { result = a+b; }
+f { a = 3; b = 5; }
+res = makeOverridable f { a = 3; b = 5; }
+res
+res.override { a = 10; }
