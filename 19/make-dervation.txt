@@ -1,0 +1,25 @@
+{
+  "/nix/store/0fbq2qipq776fr2fm7lwzj5yr923ygw4-nixpkgs-22.05.drv": {
+    "outputs": {
+      "out": {
+        "path": "/nix/store/8nps3zaqb8y152f09s06z8d61ar6v9rv-nixpkgs-22.05"
+      }
+    },
+    "inputSrcs": [
+      "/nix/store/cx80phn0ankrb04vvdkdldiw1rb9ir3a-nixexprs.tar.xz"
+    ],
+    "inputDrvs": {},
+    "system": "builtin",
+    "builder": "builtin:unpack-channel",
+    "args": [],
+    "env": {
+      "builder": "builtin:unpack-channel",
+      "channelName": "nixpkgs",
+      "name": "nixpkgs-22.05",
+      "out": "/nix/store/8nps3zaqb8y152f09s06z8d61ar6v9rv-nixpkgs-22.05",
+      "preferLocalBuild": "1",
+      "src": "/nix/store/cx80phn0ankrb04vvdkdldiw1rb9ir3a-nixexprs.tar.xz",
+      "system": "builtin"
+    }
+  }
+}

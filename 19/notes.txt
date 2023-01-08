@@ -1,0 +1,50 @@
+nix repl
+pkgs = import <nixpkgs> {}
+
+pkgs.stdenv //就是生成setup这个文件
+//_derivation /nix/store/br9cklh50wmzvkdrymd4lkw2b2h0cybg-stdenv-linux.drv_
+nix --extra-experimental-features nix-command show-derivation /nix/store/br9cklh50wmzvkdrymd4lkw2b2h0cybg-stdenv-linux.drv
+    "outputs": {
+          "out": {
+            "path": "/nix/store/3b0i6992k56lzqpndnhim5pbr3wnfnjx-stdenv-linux"
+          }
+        },
+    "builder": "/nix/store/9zm6br2ri10a0b71dll2wrim5bnhg6b6-bash-5.1-p16/bin/bash",
+        "args": [
+          "-e",
+          "/nix/store/ckzrg0f0bdyx8rf703nc61r3hz5yys9q-builder.sh"
+        ],
+    "env" : {
+        "setup": "/nix/store/55szi95529di53hsb4n39svvzmgr63hg-setup.sh",
+    //builder.sh 将老的setup拼接（前面加一引起变量）生成 $out/setup 这个文件, 也就是：
+    // /nix/store/3b0i6992k56lzqpndnhim5pbr3wnfnjx-stdenv-linux/setup
+
+---------------
+pkgs.stdenv.mkDerivation //继承了stdenv并且source了stdenv输出的setup并调用其中的genericBuild
+nix-repl> pkgs.stdenv.mkDerivation
+//_lambda @ /nix/store/8nps3zaqb8y152f09s06z8d61ar6v9rv-nixpkgs-22.05/nixpkgs/pkgs/stdenv/generic/make-derivation.nix:14:5_
+
+//
+less /nix/store/8nps3zaqb8y152f09s06z8d61ar6v9rv-nixpkgs-22.05/nixpkgs/pkgs/stdenv/generic/make-derivation.nix
+    301       builder = attrs.realBuilder or stdenv.shell;
+    302       args = attrs.args or ["-e" (attrs.builder or ./default-builder.sh)];
+    303       inherit stdenv;
+    // the default-builder.sh
+        source $stdenv/setup
+        genericBuild  // 就是这个执行构建
+
+//no use
+nix --extra-experimental-features nix-command show-derivation /nix/store/8nps3zaqb8y152f09s06z8d61ar6v9rv-nixpkgs-22.05/nixpkgs/pkgs/stdenv/generic/make-derivation.nix > make-dervation.txt
+
+
+nix-build hello.nix -I ~/.nix-defexpr/channels
+nix --extra-experimental-features nix-command show-derivation $(nix-instantiate hello.nix -I ~/.nix-defexpr/channels)
+
+    "args": [
+          "-e",
+          "/nix/store/9krlzvny65gdc8s7kpb6lkx8cd02c25b-default-builder.sh"
+        ],
+    "stdenv": "/nix/store/3b0i6992k56lzqpndnhim5pbr3wnfnjx-stdenv-linux",
+
+
+

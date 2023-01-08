@@ -1,0 +1,53 @@
+{
+  "/nix/store/5n3r78l6imgf22aar26gilwqmyp5p2mc-hello.drv": {
+    "outputs": {
+      "out": {
+        "path": "/nix/store/jbalzl1z0335aq0dkqky7dljjis7ac2n-hello"
+      }
+    },
+    "inputSrcs": [
+      "/nix/store/9krlzvny65gdc8s7kpb6lkx8cd02c25b-default-builder.sh",
+      "/nix/store/svc70mmzrlgq42m9acs0prsmci7ksh6h-hello-2.10.tar.gz"
+    ],
+    "inputDrvs": {
+      "/nix/store/25v14drl573yalys9kdc4c1m8kz5fmvd-bash-5.1-p16.drv": [
+        "out"
+      ],
+      "/nix/store/br9cklh50wmzvkdrymd4lkw2b2h0cybg-stdenv-linux.drv": [
+        "out"
+      ]
+    },
+    "system": "x86_64-linux",
+    "builder": "/nix/store/9zm6br2ri10a0b71dll2wrim5bnhg6b6-bash-5.1-p16/bin/bash",
+    "args": [
+      "-e",
+      "/nix/store/9krlzvny65gdc8s7kpb6lkx8cd02c25b-default-builder.sh"
+    ],
+    "env": {
+      "buildInputs": "",
+      "builder": "/nix/store/9zm6br2ri10a0b71dll2wrim5bnhg6b6-bash-5.1-p16/bin/bash",
+      "configureFlags": "",
+      "depsBuildBuild": "",
+      "depsBuildBuildPropagated": "",
+      "depsBuildTarget": "",
+      "depsBuildTargetPropagated": "",
+      "depsHostHost": "",
+      "depsHostHostPropagated": "",
+      "depsTargetTarget": "",
+      "depsTargetTargetPropagated": "",
+      "doCheck": "",
+      "doInstallCheck": "",
+      "name": "hello",
+      "nativeBuildInputs": "",
+      "out": "/nix/store/jbalzl1z0335aq0dkqky7dljjis7ac2n-hello",
+      "outputs": "out",
+      "patches": "",
+      "propagatedBuildInputs": "",
+      "propagatedNativeBuildInputs": "",
+      "src": "/nix/store/svc70mmzrlgq42m9acs0prsmci7ksh6h-hello-2.10.tar.gz",
+      "stdenv": "/nix/store/3b0i6992k56lzqpndnhim5pbr3wnfnjx-stdenv-linux",
+      "strictDeps": "",
+      "system": "x86_64-linux"
+    }
+  }
+}
